@@ -126,6 +126,8 @@ async function createTeams() {
     const teamsContainer = document.getElementById('teamsContainer');
     teamsContainer.innerHTML = '';
 
+    const divs = [];
+
     let teamNum = 1;
     for (const team of teams) {
         const teamDiv = document.createElement('div');
@@ -136,15 +138,20 @@ async function createTeams() {
         teamNum++;
 
         teamDiv.appendChild(h1);
+        divs.push(teamDiv);
+    }
+
+    teamNum = 0
+    for (const team of teams) {
 
         for (const player of team) {
             const playerDiv = document.createElement('div');
             playerDiv.classList.add('teamPlayer');
             playerDiv.innerText = player;
-            teamDiv.appendChild(playerDiv)
+            divs[teamNum].appendChild(playerDiv)
             await wait(1000);
         }
-
+        teamNum++;
     }
     console.log(teams);
 }
