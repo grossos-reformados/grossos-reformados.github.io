@@ -129,3 +129,10 @@ h2 {
     margin: 20px auto;
     display: block;
 }
+
+#predefButton {
+    margin: 20px auto;
+    display: block;
+    font-size: 24px;
+    padding: 5px 10px;
+}
