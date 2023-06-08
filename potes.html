@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escolher Potes</title>
+</head>
+
+<body>
+    <ul id="playerList">
+
+    </ul>
+    <form name="setPots" onsubmit="setPots(event);">
+        <input type="number" id="potNumberInput">
+        <input type="submit" value="set">
+    </form>
+    <form name="addPlayerForm" onsubmit="addPlayer(event);">
+        <input type="text" id="playerNameInput">
+        <input type="submit" value="add">
+    </form>
+    <button onclick="clearList()">clear</button>
+    <script>
+
+        let playerList = [];
+        if (localStorage.getItem('playerList') !== null) {
+            playerList = JSON.parse(localStorage.getItem('playerList'));
+        }
+
+        function addPlayer(event) {
+            event.preventDefault();
+            const playerName = document.getElementById('playerNameInput').value;
+            playerList.push(playerName);
+            document.getElementById('playerNameInput').value = '';
+            createPlayerList();
+            localStorage.setItem('playerList', JSON.stringify(playerList));
+        }
+
+        function setPots(event) {
+            event.preventDefault();
+            const pots = document.getElementById('setPotsInput').value;
+            // playerList.push(playerName);
+            // document.getElementById('playerNameInput').value = '';
+            // createPlayerList();
+            // localStorage.setItem('playerList', JSON.stringify(playerList));
+        }
+
+        function createPlayerList() {
+            const playerListElement = document.getElementById('playerList');
+            playerListElement.innerHTML = '';
+
+
+            for (const player of playerList) {
+                let listElement = document.createElement("li");
+                let listValue = document.createTextNode(player);
+                listElement.appendChild(listValue);
+                playerListElement.appendChild(listElement);
+            }
+        }
+
+        function clearList() {
+            console.log('clicked');
+            localStorage.clear();
+            playerList = [];
+            createPlayerList();
+        }
+
+        createPlayerList();
+
+    </script>
+</body>
+
+</html>
