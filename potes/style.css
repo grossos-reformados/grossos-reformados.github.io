@@ -2,9 +2,23 @@
     box-sizing: border-box;
 }
 
+:root {
+    --color-text-primary: #1c2a38;
+    --color-text-secondary: #8A8F98;
+    --color-text-alert: #d72641;
+    --color-text-icon: #dbdade;
+    --color-bg-primary: #fff;
+    --color-bg-secondary: #f3f5f9;
+    --color-bg-alert: #fdeaec;
+    --color-theme-primary: #04AA6D;
+}
+
+
 html,
 body {
     font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
     /* height: 200vh; */
 }
 
@@ -141,4 +155,29 @@ h2 {
 
 #teamsContainer > div {
     min-width: 30ch;
+}
+
+.topnav {
+  background-color: var(--color-bg-secondary);
+  overflow: hidden;
+  border-bottom: var(--color-theme-primary) 3px solid;
+}
+
+.topnav a {
+  float: left;
+  color: var(--color-text-primary);
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: var(--color-bg-primary);
+  color: black;
+}
+
+.topnav a.active {
+  background-color: var(--color-theme-primary);
+  color: white;
 }
